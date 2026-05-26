@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Account & Data Request | Fix My Semester</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        --card-bg: rgba(30, 41, 59, 0.7);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --danger: #f43f5e;
+        --danger-hover: #e11d48;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --success: #10b981;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: var(--bg-gradient);
+        color: var(--text-primary);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+        background: var(--card-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .logo-placeholder {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+        border-radius: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Outfit", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 16px;
+        box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+      }
+
+      h1 {
+        font-family: "Outfit", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 8px;
+        background: linear-gradient(to right, #ffffff, #cbd5e1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .subtitle {
+        color: var(--text-secondary);
+        font-size: 15px;
+      }
+
+      .info-box {
+        background: rgba(244, 63, 94, 0.08);
+        border-left: 4px solid var(--danger);
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 28px;
+      }
+
+      .info-title {
+        color: var(--danger);
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 6px;
+      }
+
+      .info-box p {
+        font-size: 14px;
+        color: #fda4af;
+        line-height: 1.5;
+      }
+
+      section {
+        margin-bottom: 28px;
+      }
+
+      h2 {
+        font-family: "Outfit", sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #e2e8f0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+
+      li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--danger);
+        font-weight: 700;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #cbd5e1;
+      }
+
+      input[type="email"],
+      textarea {
+        width: 100%;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-family: inherit;
+        color: #ffffff;
+        font-size: 15px;
+        transition: all 0.3s ease;
+      }
+
+      input[type="email"]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        background: rgba(15, 23, 42, 0.8);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        background: var(--danger);
+        color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        padding: 16px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);
+      }
+
+      .btn:hover {
+        background: var(--danger-hover);
+        transform: translateY(-1px);
+      }
+
+      .btn:active {
+        transform: translateY(1px);
+      }
+
+      footer {
+        margin-top: 32px;
+        text-align: center;
+        font-size: 12px;
+        color: #64748b;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 20px;
+      }
+
+      /* Success screen styling */
+      .success-state {
+        display: none;
+        text-align: center;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .success-icon {
+        width: 64px;
+        height: 64px;
+        background: rgba(16, 185, 129, 0.1);
+        border: 2px solid var(--success);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: var(--success);
+        margin-bottom: 24px;
+      }
+
+      .success-state h2 {
+        font-family: "Outfit", sans-serif;
+        font-size: 24px;
+        color: #ffffff;
+        margin-bottom: 12px;
+      }
+
+      .success-state p {
+        color: var(--text-secondary);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Request Form State -->
+      <div id="form-state">
+        <header>
+          <div class="logo-placeholder">F</div>
+          <h1>Delete Account & Data</h1>
+          <p class="subtitle">
+            Request permanent deletion of your Fix My Semester account
+          </p>
+        </header>
+
+        <div class="info-box">
+          <div class="info-title">Important Action</div>
+          <p>
+            This action is irreversible. All data associated with your academic
+            profile and credentials will be permanently purged.
+          </p>
+        </div>
+
+        <section>
+          <h2>What data will be deleted?</h2>
+          <ul>
+            <li>
+              Your personal profile (Name, email address, WhatsApp/phone number,
+              university details).
+            </li>
+            <li>
+              All listings you have created on the peer-to-peer student
+              Marketplace.
+            </li>
+            <li>
+              Your active rideshare configurations, split coordinate requests,
+              and co-rider details.
+            </li>
+            <li>
+              All peer chat messages and message history across the entire
+              platform.
+            </li>
+          </ul>
+        </section>
+
+        <!-- A clean, functional form. It will send a pre-formatted email to the developer -->
+        <form id="delete-form" onsubmit="handleRequest(event)">
+          <div class="form-group">
+            <label for="user-email">Registered University Email</label>
+            <input
+              type="email"
+              id="user-email"
+              placeholder="student@university.ac.lk"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="delete-reason">Reason for deletion (Optional)</label>
+            <textarea
+              id="delete-reason"
+              placeholder="Help us understand how we can improve..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn">Submit Deletion Request</button>
+        </form>
+      </div>
+
+      <!-- Success Feedback State -->
+      <div id="success-state" class="success-state">
+        <div class="success-icon">✓</div>
+        <h2>Request Submitted</h2>
+        <p>
+          Your request to delete your account has been received. <br />We will
+          verify your email and permanently purge your database records within 7
+          business days.
+        </p>
+      </div>
+
+      <footer>&copy; 2026 Fix My Semester. All rights reserved.</footer>
+    </div>
+
+    <script>
+      function handleRequest(e) {
+        e.preventDefault();
+        const email = document.getElementById("user-email").value;
+        const reason = document.getElementById("delete-reason").value;
+
+        // Generate an automatic email draft for the user to make it completely transparent
+        // change 'support@fixmysemester.com' to your support email address
+        const subject = encodeURIComponent(
+          "Fix My Semester - Account Deletion Request",
+        );
+        const body = encodeURIComponent(
+          "Please delete my account and associated data.\n\n" +
+            "Registered Email: " +
+            email +
+            "\n" +
+            "Reason (optional): " +
+            reason +
+            "\n\n" +
+            "I understand this is a permanent deletion request and cannot be undone.",
+        );
+
+        // Open user's email client
+        window.location.href =
+          "mailto:saiyidev@gmail.com?subject=" + subject + "&body=" + body;
+
+        // Transition UI to the success screen
+        document.getElementById("form-state").style.display = "none";
+        document.getElementById("success-state").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
